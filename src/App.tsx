@@ -1,6 +1,6 @@
 import Banner from "./common/components/banner/banner.component";
 import Header from "./common/components/header/header.component";
-import Feed from "./modules/feed/components/feex/feed/feed.component";
+import Feed from "./modules/feed/components/feed/feed.component";
 
 function App() {
   return (
