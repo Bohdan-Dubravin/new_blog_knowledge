@@ -1,19 +1,20 @@
-import clsx from "clsx";
-import { Link } from "react-router-dom";
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import { Author } from '../../api/dto/global-feed.in';
 
 export enum NameStyleEnum {
-  GREEN = "GREEN",
-  LIGHT = "LIGHT",
+  GREEN = 'GREEN',
+  LIGHT = 'LIGHT',
 }
 
 enum MetaDirectionEnum {
-  ROW = "ROW",
-  COL = "COL",
+  ROW = 'ROW',
+  COL = 'COL',
 }
 
 enum NameSizeEnum {
-  SM = "SM",
-  BASE = "BASE",
+  SM = 'SM',
+  BASE = 'BASE',
 }
 
 // interface ArticleAuthorProps {
@@ -24,19 +25,28 @@ enum NameSizeEnum {
 //   nameSize?: keyof typeof NameSizeEnum;
 // }
 
-export const ArticleAuthor = () => {
-  const usernameClasses = clsx("font-medium flex-col", {
+interface AuthorProps extends Author {}
+
+export const ArticleAuthor = ({
+  username,
+  image,
+  bio,
+  following,
+}: AuthorProps) => {
+  console.log(username);
+
+  const usernameClasses = clsx('font-medium flex-col', {
     // "text-white hover:text-white": nameStyle === NameStyleEnum.LIGHT,
     // "text-date": nameSize === NameSizeEnum.SM,
   });
 
-  const metaClasses = clsx("mr-6 ml-0.3 leading-4 inline-flex flex-col", {
+  const metaClasses = clsx('mr-6 ml-0.3 leading-4 inline-flex flex-col', {
     // "flex-col": direction === MetaDirectionEnum.COL,
     // "flex-row items-center gap-2": direction === MetaDirectionEnum.ROW,
   });
 
   const imgClasses = clsx(
-    "inline-block rounded-full h-8 w-8 object-cover object-center",
+    'inline-block rounded-full h-8 w-8 object-cover object-center',
     {
       // "h-8 w-8": nameSize === NameSizeEnum.BASE,
       // "h-5 w-5": nameSize === NameSizeEnum.SM,
@@ -46,21 +56,15 @@ export const ArticleAuthor = () => {
   return (
     <div className="flex">
       <Link to={`/@`}>
-        <img
-          src={
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          }
-          alt={` avatar`}
-          className={imgClasses}
-        />
+        <img src={image} alt={` avatar`} className={imgClasses} />
       </Link>
       <div className={metaClasses}>
         <Link to={`/@`} className={usernameClasses}>
-          author 2
+          {username}
         </Link>
         <span className="text-conduit-gray-500 text-date">
           {/* {DateTime.fromISO(publishedAt).toLocaleString(DateTime.DATE_FULL)} */}
-          02/04/2023
+          {bio}
         </span>
       </div>
     </div>
