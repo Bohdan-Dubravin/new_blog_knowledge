@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { ArticleAuthor } from '../article-author/article-author.component';
-import FavoriteButton from '../favorite-button/favorite-button.component';
-import { TagList } from '../tag-list/tag-list.component';
-import { FeedArticle } from '../../api/dto/global-feed.in';
+import { Link } from "react-router-dom";
+import { ArticleAuthor } from "../article-author/article-author.component";
+import FavoriteButton from "../favorite-button/favorite-button.component";
+import { TagList } from "../tag-list/tag-list.component";
+import { FeedArticle } from "../../api/dto/global-feed.in";
 
 interface ArticleProps extends FeedArticle {}
 
@@ -14,14 +14,13 @@ const Article = ({
   favoritesCount,
   slug,
   favorited,
+  createdAt,
 }: ArticleProps) => {
-  console.log(author);
-
   return (
     <article>
       <div className="border-t border-black/10 py-6">
         <div className="mb-4 font-light flex justify-between">
-          <ArticleAuthor {...author} />
+          <ArticleAuthor {...author} publishedAt={createdAt} />
           <FavoriteButton
             count={favoritesCount}
             slug={slug}

@@ -13,11 +13,11 @@ interface FeedToggleProps {
   items?: FeedToggleItem[];
 }
 
-const FeedToggle: FC<FeedToggleProps> = ({
+const FeedToggle = ({
   defaultText = "Global Feed",
   defaultLink = "/",
   items = [],
-}) => {
+}: FeedToggleProps) => {
   const [searchParams] = useSearchParams();
   const tag = searchParams.get("tag");
 

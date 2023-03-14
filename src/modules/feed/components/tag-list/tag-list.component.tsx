@@ -31,7 +31,7 @@ export const TagList = ({
   );
 
   return (
-    <ul className="flex flex-wrap">
+    <ul className="flex flex-wrap ">
       {list.map((tag) => {
         return itemAs === "li" ? (
           <li className={itemClasses} key={tag}>
